@@ -7,11 +7,12 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepare": "cd .. && husky install"
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run lint"
+      "pre-commit": "npm run lint"
     }
   },
   "keywords": [],
