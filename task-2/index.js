@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv';
 import express from 'express';
-import router from "./routes/users.js";
+import router from './routes/users.js';
 
 dotenv.config();
 
@@ -10,11 +10,11 @@ const server = express();
 server.use(express.json());
 server.use('/', router);
 
-async function startApp () {
+async function startApp() {
     try {
-        server.listen(PORT, () => {console.log("Server works on port " + PORT)})
+        server.listen(PORT, () => { console.log(`Server works on port ${PORT}`); });
     } catch (error) {
-        console.log('App start error', error)
+        console.log('App start error', error);
     }
 }
 
