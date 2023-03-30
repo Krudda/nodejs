@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "EPAM node.js course",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "task1": "nodemon task-1/task1_1.js",
+    "task2": "nodemon task-1/task1_2.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,9 +19,6 @@
     "url": "https://github.com/Krudda/nodejs/issues"
   },
   "homepage": "https://github.com/Krudda/nodejs#readme",
-  "devDependencies": {
-    "nodemon": "^2.0.21"
-  },
   "dependencies": {
     "csvtojson": "^2.0.10"
   }
