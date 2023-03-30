@@ -22,7 +22,7 @@ class UserController {
     async getUser(req, res) {
         try {
             const user = await UserService.getUser(req.params.id);
-            return res.json(user);
+            return user ? res.json(user) : res.status(400).json("User not found");
         } catch (error) {
             res.status(500).json(error.message);
         }
@@ -33,7 +33,12 @@ class UserController {
             const user = await UserService.updateUser(req.body);
             return res.json(user);
         } catch (error) {
-            res.status(500).json(error.message);
+            if (error.$metadata.httpStatusCode === 400) {
+                res.status(400).json("User not found");
+            } else {
+                res.status(500).json(error.message);
+            }
+
         }
     }
 

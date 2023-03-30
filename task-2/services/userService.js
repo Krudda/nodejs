@@ -6,7 +6,6 @@ import {
     GetCommand,
     UpdateCommand
 } from "@aws-sdk/lib-dynamodb";
-import { UpdateItemCommand } from "@aws-sdk/client-dynamodb";
 import { v4 as generateId } from 'uuid';
 
 class UserService {
@@ -51,17 +50,20 @@ class UserService {
         const updateUserCommand = new UpdateCommand({
 			TableName: process.env.USERS_TABLE_NAME,
             Key: { id },
+            ConditionExpression: "id = :id",
             UpdateExpression: "set login = :l, age = :a, password = :p",
             ExpressionAttributeValues: {
                 ":l": login,
                 ":a": age,
-                ":p": password
+                ":p": password,
+                ":id": id
             },
             ReturnValues: "ALL_NEW"
 		});
 
-        const { Attributes } = await ddbDocClient.send(updateUserCommand);
-        return Attributes;
+        const data = await ddbDocClient.send(updateUserCommand);
+        console.log('data',  data);
+        return data.Attributes;
     }
 
     async deleteUser(id) {
