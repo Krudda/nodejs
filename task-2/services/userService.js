@@ -19,12 +19,24 @@ class UserService {
         return res;
     }
 
-    async getAllUsers() {
-        const scanUserCommand = new ScanCommand({
-            TableName: process.env.USERS_TABLE_NAME,
-        });
-        const { Items } = await ddbClient.send(scanUserCommand);
-        return Items;
+    async getAutoSuggestUsers(search, limit) {
+        const getUsersCommand = search
+            ? new ScanCommand({
+                TableName: process.env.USERS_TABLE_NAME,
+                FilterExpression: 'contains (login, :l) and isDeleted = :deleted',
+                ExpressionAttributeValues: {
+                    ':l': search,
+                    ':deleted': false,
+                },
+            })
+            : new ScanCommand({
+                TableName: process.env.USERS_TABLE_NAME,
+            });
+
+        const { Items } = await ddbClient.send(getUsersCommand);
+        return Items
+            .sort((userA, userB) => (userA.login > userB.login ? 1 : -1))
+            .slice(0, +limit);
     }
 
     async getUser(id) {

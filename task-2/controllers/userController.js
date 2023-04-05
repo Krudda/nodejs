@@ -10,10 +10,12 @@ class UserController {
         }
     }
 
-    async getAllUsers(req, res) {
+    async getSuggestedUsers(req, res) {
+        const { search, limit = process.env.SUGGESTED_USERS_COUNT } = req.query;
+
         try {
-            const users = await UserService.getAllUsers();
-            return res.json(users);
+            const suggestedUsers = await UserService.getAutoSuggestUsers(search, limit);
+            return res.json(suggestedUsers);
         } catch (error) {
             return res.status(500).json(error.message);
         }
