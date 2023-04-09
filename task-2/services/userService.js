@@ -5,8 +5,8 @@ import {
     UpdateCommand,
 } from '@aws-sdk/lib-dynamodb';
 import { v4 as generateId } from 'uuid';
-import ddbClient from '../lib/ddbClient.js';
-import ddbDocClient from '../lib/ddbDocClient.js';
+import ddbClient from '../libs/ddbClient.js';
+import ddbDocClient from '../libs/ddbDocClient.js';
 
 class UserService {
     async createUser(user) {

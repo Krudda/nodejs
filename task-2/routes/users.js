@@ -1,7 +1,7 @@
 import Router from 'express';
 import UserController from '../controllers/userController.js';
 import userValidateDto from '../middlewares/userValidateDto.js';
-import userSchema from '../schema/userSchema.js';
+import userSchema from '../schemas/userSchema.js';
 
 const router = new Router();
 
