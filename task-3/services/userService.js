@@ -15,8 +15,7 @@ class UserService {
             TableName: process.env.USERS_TABLE_NAME,
             Item: { ...user, id, isDeleted: false },
         });
-        const res = await ddbDocClient.send(createUserCommand);
-        return res;
+        return await ddbDocClient.send(createUserCommand);
     }
 
     async getAutoSuggestUsers(search, limit) {
