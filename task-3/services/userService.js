@@ -1,15 +1,12 @@
-import { v4 as generateId } from 'uuid';
-import db, {openConnection, closeConnection} from '../db/db.js'
-import Users from '../models/User.js';
+import db from '../db/db.js';
 import User from "../models/User.js";
 
 class UserService {
     async createUser(userData) {
         try {
-            const user = await db.transaction(async () => {
+            return await db.transaction(async () => {
                 return await User.create(userData);
             })
-            return user;
         }
         catch (err) {
             throw new Error(err)
@@ -17,17 +14,17 @@ class UserService {
 
     }
 
-    async getAutoSuggestUsers(search, limit) {
+    async getAutoSuggestUsers(offset, limit) {
         try {
-            const users = await db.transaction(async () => {
-                return await User.findAll({
-                    attributes: ['username', 'email'],
-                    where: {
-                        isDeleted: 'false'
-                    }
-                });
-            })
-            return users || [];
+            const { count, rows } = await User.findAndCountAll({
+                attributes: ['username', 'email'],
+                where: {
+                    isDeleted: 'false'
+                },
+                offset,
+                limit
+            });
+            return  { count, rows };
         } catch (err) {
             throw new Error(err)
         }
@@ -36,40 +33,48 @@ class UserService {
     async getUser(id) {
         try {
             const user = await User.findByPk(id);
-            return user ? user : `User with ID ${id} not found`;
+            return user.isDeleted ? null : { username: user.username, email: user.email };
+        } catch (err) {
+            throw new Error(err);
+        }
+    }
+
+    async updateUser(user) {
+        const { id, ...userFields} = user;
+        try {
+            return await db.transaction(async () => {
+                const isUserExist = await this.getUser(id);
+
+                if (!isUserExist) {
+                    return new Error(`User with ID: ${id} not found.`);
+                }
+
+                await User.update({...userFields}, {
+                    where: { id }
+                });
+                return `User with ID ${id} is updated.`;
+            })
         } catch (err) {
             throw new Error(err)
         }
     }
 
-    async updateUser(user) {
-        // try {
-        //     await User.update({ lastName: "Doe" }, {
-        //         where: {
-        //             lastName: null
-        //         }
-        //     });
-        // }
-    }
-
     async deleteUser(id) {
         try {
             return await db.transaction(async () => {
-                const user = await User.findByPk(id);
+                const isUserExist = await this.getUser(id);
 
-                if (!user || user.isDeleted) {
-                    return new Error(`Cannot delete user with ID: ${id}. User not found.`);
-                };
+                if (!isUserExist) {
+                    return new Error(`User with ID: ${id} not found.`);
+                }
 
                 await User.update({ isDeleted: true }, {
-                    where: {
-                        id: id
-                    }
+                    where: { id }
                 });
-                return `User with ID ${id} is deleted`;
+                return `User with ID ${id} is deleted.`;
             })
         } catch (err) {
-            throw new Error(err)
+            return new Error(err.message)
         }
     }
 }

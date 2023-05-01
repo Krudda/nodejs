@@ -30,12 +30,12 @@ const db = new Sequelize({
 
 export default db;
 
-export function openConnection() {
-    return db.authenticate()
-}
-
-export function closeConnection() {
-    return db.close()
-}
+// export function openConnection() {
+//     return db.authenticate()
+// }
+//
+// export function closeConnection() {
+//     return db.close()
+// }
 
 
