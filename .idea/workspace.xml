@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="feat - add idea folder to gitignore" />
+    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="feat - resolve commit files">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-3/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-3/controllers/userController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-3/db/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-3/db/db.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-3/models/Project.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-3/models/Project.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-3/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-3/models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-3/schemas/userSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-3/schemas/userSchema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-3/services/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-3/services/userService.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,7 +37,20 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="feat - resolve commit files">
+      <created>1682365053725</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1682365053725</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -42,5 +63,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat - resolve commit files" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat - resolve commit files" />
   </component>
 </project>

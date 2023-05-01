@@ -1,19 +1,22 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../db/db.js';
+import User from "./User.js";
 
-class Project extends Model {
-
-}
+class Project extends Model {}
 
 const model = Project.init({
     id: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
     user_id: {
         type: DataTypes.UUID,
-        allowNull: false
+        allowNull: false,
+        // references: {
+        //     model: User,
+        //     key: 'id'
+        // }
     },
     project_name: {
         type: DataTypes.STRING(255),

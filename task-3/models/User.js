@@ -1,13 +1,12 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../db/db.js';
 
-class User extends Model {
-
-}
+class User extends Model {}
 
 const model = User.init({
     id: {
-        type: DataTypes.UUIDV4,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
         allowNull: false
     },
@@ -25,10 +24,12 @@ const model = User.init({
     },
     isDeleted: {
         type: DataTypes.BOOLEAN,
-        allowNull: true
+        defaultValue: false,
+        allowNull: false
     }
 }, {
     sequelize: db,
-    tableName: 'users',
+    tableName: 'Users',
+    modelName: 'User'
 });
 export default model;

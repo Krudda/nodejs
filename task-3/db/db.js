@@ -4,31 +4,38 @@ import * as dotenv from "dotenv";
 
 dotenv.config();
 
-export const namespace = createNamespace('ns');
+const namespace = createNamespace('ns');
 Sequelize.useCLS(namespace);
 
-const db = new Sequelize(
-    process.env.USERS_TABLE_NAME,
-    process.env.DB_USER_NAME,
-    process.env.DB_USER_PASSWORD,
-    {
-        host: process.env.DB_HOST,
-        dialect: process.env.DB_TYPE,
-        logging: console.log,
-        timezone: '+00:00',
-        define: {
-            timestamps: false
+const db = new Sequelize({
+    database: process.env.DB_NAME,
+    username: process.env.DB_USER_NAME,
+    password: process.env.DB_USER_PASSWORD,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    dialect: process.env.DB_TYPE,
+    logging: console.log,
+    timezone: '+00:00',
+    define: {
+        timestamps: false
+    },
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
         }
+    },
     }
 );
 
+export default db;
+
 export function openConnection() {
-    db.authenticate()
+    return db.authenticate()
 }
 
 export function closeConnection() {
-    db.close()
+    return db.close()
 }
 
-export default db;
 
