@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="feat - add error handling">
-      <change beforePath="$PROJECT_DIR$/task-3/db/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-3/db/db.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-3/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-3/index.js" afterDir="false" />
+    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="refactor - remove unnecessary dependencies">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-3/schemas/userSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-3/schemas/userSchema.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +59,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682962695477</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="refactor - remove unnecessary dependencies">
+      <created>1682963019245</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1682963019245</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -77,6 +84,7 @@
     <MESSAGE value="feat - resolve commit files" />
     <MESSAGE value="feat - add db connection, add model, update services" />
     <MESSAGE value="feat - add error handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat - add error handling" />
+    <MESSAGE value="refactor - remove unnecessary dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor - remove unnecessary dependencies" />
   </component>
 </project>
