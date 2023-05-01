@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="feat - add db connection, add model, update services">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-3/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-3/controllers/userController.js" afterDir="false" />
+    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="feat - add error handling">
       <change beforePath="$PROJECT_DIR$/task-3/db/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-3/db/db.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-3/models/Project.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-3/services/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-3/services/userService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-3/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-3/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +52,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682948322679</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat - add error handling">
+      <created>1682962695477</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1682962695477</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -72,6 +76,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat - resolve commit files" />
     <MESSAGE value="feat - add db connection, add model, update services" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat - add db connection, add model, update services" />
+    <MESSAGE value="feat - add error handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat - add error handling" />
   </component>
 </project>
