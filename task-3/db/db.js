@@ -4,8 +4,8 @@ import * as dotenv from "dotenv";
 
 dotenv.config();
 
-const namespace = createNamespace('ns');
-Sequelize.useCLS(namespace);
+const session = createNamespace('session');
+Sequelize.useCLS(session);
 
 const db = new Sequelize({
     database: process.env.DB_NAME,
