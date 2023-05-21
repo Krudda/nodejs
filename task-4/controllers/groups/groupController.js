@@ -3,8 +3,8 @@ import GroupService from "../../services/groupService.js";
 
 export const createGroupController = () => async (req, res, next) => {
     try {
-        const user = await GroupService.createGroup(req.body);
-        res.json(user);
+        const group = await GroupService.createGroup(req.body);
+        res.json(group);
         return next();
     } catch (error) {
         requestErrorHandler(error, res);
@@ -15,8 +15,8 @@ export const createGroupController = () => async (req, res, next) => {
 export const getGroupController = () => async (req, res, next) => {
     try {
         const { id } = req.params;
-        const result = await GroupService.getGroup(id);
-        checkRequestStatus(result, res);
+        const requestResult = await GroupService.getGroup(id);
+        checkRequestStatus(requestResult, res);
         return next();
     } catch (error) {
         requestErrorHandler(error, res);
@@ -25,11 +25,11 @@ export const getGroupController = () => async (req, res, next) => {
 }
 
 export const getGroupsController = () => async (req, res, next) => {
-    const { offset = process.env.USERS_OFFSET, limit = process.env.USERS_LIMIT } = req.query;
+    const { offset = process.env.REQUEST_OFFSET, limit = process.env.REQUEST_LIMIT } = req.query;
 
     try {
-        const suggestedUsers = await GroupService.getGroups(offset, limit);
-        res.json(suggestedUsers);
+        const groups = await GroupService.getGroups(offset, limit);
+        res.json(groups);
         return next();
     } catch (error) {
         requestErrorHandler(error, res);
@@ -39,8 +39,8 @@ export const getGroupsController = () => async (req, res, next) => {
 
 export const updateGroupController = () => async (req, res, next) => {
     try {
-        const result = await GroupService.updateGroup(req.body);
-        checkRequestStatus(result, res);
+        const requestResult = await GroupService.updateGroup(req.body);
+        checkRequestStatus(requestResult, res);
         return next();
     } catch (error) {
         requestErrorHandler(error, res);
@@ -50,8 +50,8 @@ export const updateGroupController = () => async (req, res, next) => {
 
 export const deleteGroupController = () => async (req, res, next) => {
     try {
-        const result = await GroupService.deleteGroup(req.body);
-        checkRequestStatus(result, res);
+        const requestResult = await GroupService.deleteGroup(req.body);
+        checkRequestStatus(requestResult, res);
         return next();
     } catch (error) {
         requestErrorHandler(error, res);
