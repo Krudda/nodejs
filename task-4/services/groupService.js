@@ -4,6 +4,8 @@ import Group from "../models/Group.js";
 class GroupService {
     async createGroup(groupData) {
         try {
+            // const creationTable = await Group.sync({ force: true });
+            // console.log("The table for the Group model was just (re)created!, creationTable", creationTable);
             return await db.transaction(async () => {
                 return await Group.create(groupData);
             })

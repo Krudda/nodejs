@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="feat - add group subrouter, controller and service">
+    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="refactor - user and group controllers refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-4/controllers/groups/groupController.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/controllers/groups/groupController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-4/controllers/users/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/controllers/users/userController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-4/models/Group.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/models/Group.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-4/services/groupService.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/services/groupService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +112,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684667760209</updated>
-      <workItem from="1684667762412" duration="15478000" />
+      <workItem from="1684667762412" duration="16907000" />
     </task>
     <task id="LOCAL-00006" summary="feat - init project">
       <created>1684667930942</created>
@@ -135,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684691317703</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="refactor - user and group controllers refactor">
+      <created>1684691725596</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1684691725596</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,6 +168,7 @@
     <MESSAGE value="feat - init project" />
     <MESSAGE value="feat - add user subrouter, refactor user controller" />
     <MESSAGE value="feat - add group subrouter, controller and service" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat - add group subrouter, controller and service" />
+    <MESSAGE value="refactor - user and group controllers refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor - user and group controllers refactor" />
   </component>
 </project>

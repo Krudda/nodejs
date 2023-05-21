@@ -23,9 +23,12 @@ const model = Group.init({
         allowNull: false,
     },
     permission: {
-        type: DataTypes.ENUM({
-            values: permissions
-        })
+        type: DataTypes.ARRAY(
+            DataTypes.ENUM({
+                values: permissions
+            })
+        ),
+        allowNull: false,
     }
 }, {
     sequelize: db,
