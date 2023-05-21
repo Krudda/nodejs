@@ -1,18 +1,17 @@
 import { Router } from 'express';
-import userValidateDto from "../../middlewares/userValidateMiddlevare.js";
-import UserController, {
-    createUserController,
+import {
+    createUserController, deleteUserController,
     getSuggestedUsersController,
     getUserController, updateUserController
-} from "../userController.js";
-import userValidateMiddlevare from "../../middlewares/userValidateMiddlevare.js";
+} from "../controllers/users/userController.js";
+import userValidationMiddlevare from "../middlewares/userValidationMiddlevare.js";
 
 export const createUsersSubrouter = () => {
     const usersSubrouter = Router();
 
     usersSubrouter.post(
         '/',
-        userValidateMiddlevare(),
+        userValidationMiddlevare(),
         createUserController()
     );
 
@@ -28,13 +27,13 @@ export const createUsersSubrouter = () => {
 
     usersSubrouter.put(
         '/',
-        userValidateMiddlevare(),
+        userValidationMiddlevare(),
         updateUserController()
     );
 
     usersSubrouter.delete(
         '/:id',
-        UserController.deleteUser
+        deleteUserController()
     );
 
     return usersSubrouter;

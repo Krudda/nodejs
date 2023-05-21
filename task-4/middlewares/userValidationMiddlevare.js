@@ -1,6 +1,6 @@
 import userSchema from "../schemas/userSchema.js";
 
-const userValidateMiddlevare = () => (req, res, next) => {
+const userValidationMiddlevare = () => (req, res, next) => {
     const isUserValid = userSchema(req.body);
 
     if (!isUserValid) {
@@ -14,4 +14,4 @@ const userValidateMiddlevare = () => (req, res, next) => {
     return next();
 };
 
-export default userValidateMiddlevare;
+export default userValidationMiddlevare;
