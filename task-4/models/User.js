@@ -25,7 +25,7 @@ const model = User.init({
         type: DataTypes.STRING(255),
         allowNull: false,
         validate: {
-            len: [2, 10]
+            len: [2, 20]
         }
     },
     isDeleted: {

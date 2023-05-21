@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="feat - init project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-4/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/controllers/userController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-4/middlewares/userValidateDto.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/middlewares/userValidateMiddlevare.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task-4/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/models/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-4/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-4/schemas/userSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/schemas/userSchema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-4/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/routes/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-4/services/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/services/userService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +109,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684667760209</updated>
-      <workItem from="1684667762412" duration="3446000" />
+      <workItem from="1684667762412" duration="11706000" />
     </task>
     <task id="LOCAL-00006" summary="feat - init project">
       <created>1684667930942</created>

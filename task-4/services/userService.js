@@ -33,7 +33,10 @@ class UserService {
     async getUser(id) {
         try {
             const user = await User.findByPk(id);
-            return user.isDeleted ? null : { username: user.username, email: user.email };
+            if (!user || user.isDeleted) {
+                return new Error(`User with ID: ${id} not found.`);
+            }
+            return { username: user.username, email: user.email };
         } catch (err) {
             throw new Error(err);
         }
@@ -43,10 +46,10 @@ class UserService {
         const { id, ...userFields} = user;
         try {
             return await db.transaction(async () => {
-                const isUserExist = await this.getUser(id);
+                const checkUserError = await this.getUser(id);
 
-                if (!isUserExist) {
-                    return new Error(`User with ID: ${id} not found.`);
+                if (checkUserError instanceof Error) {
+                    return checkUserError;
                 }
 
                 await User.update({...userFields}, {
@@ -62,10 +65,10 @@ class UserService {
     async deleteUser(id) {
         try {
             return await db.transaction(async () => {
-                const isUserExist = await this.getUser(id);
+                const checkUserError = await this.getUser(id);
 
-                if (!isUserExist) {
-                    return new Error(`User with ID: ${id} not found.`);
+                if (checkUserError instanceof Error) {
+                    return checkUserError;
                 }
 
                 await User.update({ isDeleted: true }, {
