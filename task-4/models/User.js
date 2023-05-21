@@ -34,6 +34,13 @@ const model = User.init({
         allowNull: false
     }
 }, {
+    scopes: {
+        activeUsers(){
+            return {
+                where: { isDeleted: false }
+            }
+        }
+    },
     sequelize: db,
     tableName: 'Users',
     modelName: 'User'

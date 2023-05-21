@@ -16,11 +16,8 @@ class UserService {
 
     async getAutoSuggestUsers(offset, limit) {
         try {
-            const { count, rows } = await User.findAndCountAll({
+            const { count, rows } = await User.scope('activeUsers').findAndCountAll({
                 attributes: ['username', 'email'],
-                where: {
-                    isDeleted: 'false'
-                },
                 offset,
                 limit
             });
@@ -32,8 +29,8 @@ class UserService {
 
     async getUser(id) {
         try {
-            const user = await User.findByPk(id);
-            if (!user || user.isDeleted) {
+            const user = await User.scope('activeUsers').findByPk(id);
+            if (!user) {
                 return new Error(`User with ID: ${id} not found.`);
             }
             return { username: user.username, email: user.email };
