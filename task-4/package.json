@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "task-4 Second entity and many-to-many relationships",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",

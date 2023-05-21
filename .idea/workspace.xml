@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="feat - add email validation">
+    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="feat - init project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-4/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-4/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-4/schemas/userSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/schemas/userSchema.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,13 +16,18 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -28,14 +36,35 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="ProjectId" id="2Q6IljIONyD6Q1TzQLnWUAS069J" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "node.js.selected.package.tslint": "(autodetect)"
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/dmitrijkruglov/Desktop/JS/NodeJS/nodejs/task-4/models",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.fileTypes",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/task-4/models" />
+      <recent name="$PROJECT_DIR$/task-4" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="feat - resolve commit files">
       <created>1682365053725</created>
@@ -72,8 +101,26 @@
       <option name="project" value="LOCAL" />
       <updated>1682963712418</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="feat - add email validation" />
+      <created>1684667760209</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684667760209</updated>
+      <workItem from="1684667762412" duration="3446000" />
+    </task>
+    <task id="LOCAL-00006" summary="feat - init project">
+      <created>1684667930942</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1684667930942</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -92,6 +139,7 @@
     <MESSAGE value="feat - add error handling" />
     <MESSAGE value="refactor - remove unnecessary dependencies" />
     <MESSAGE value="feat - add email validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat - add email validation" />
+    <MESSAGE value="feat - init project" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat - init project" />
   </component>
 </project>

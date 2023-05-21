@@ -16,11 +16,17 @@ const model = User.init({
     },
     email: {
         type: DataTypes.STRING(255),
-        allowNull: false
+        allowNull: false,
+        validate: {
+            isEmail: true
+        }
     },
     password: {
         type: DataTypes.STRING(255),
-        allowNull: false
+        allowNull: false,
+        validate: {
+            len: [2, 10]
+        }
     },
     isDeleted: {
         type: DataTypes.BOOLEAN,
