@@ -5,9 +5,11 @@ import Group from "../models/Group.js";
 class UserService {
     async createUser(userData) {
         try {
-            return await db.transaction(async () => {
-                return await User.create(userData);
-            })
+            const user = await User.create(userData);
+            if (!user) {
+                return new Error('Error user creation.');
+            }
+            return 'User successfully created.';
         }
         catch (err) {
             throw new Error(err)

@@ -50,7 +50,7 @@ export const updateGroupController = () => async (req, res, next) => {
 
 export const deleteGroupController = () => async (req, res, next) => {
     try {
-        const requestResult = await GroupService.deleteGroup(req.body);
+        const requestResult = await GroupService.deleteGroup(req.params.id);
         checkRequestStatus(requestResult, res);
         return next();
     } catch (error) {

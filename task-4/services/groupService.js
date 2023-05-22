@@ -4,8 +4,6 @@ import Group from "../models/Group.js";
 class GroupService {
     async createGroup(groupData) {
         try {
-            // const creationTable = await Group.sync({ force: true });
-            // console.log("The table for the Group model was just (re)created!, creationTable", creationTable);
             return await db.transaction(async () => {
                 return await Group.create(groupData);
             })
@@ -19,7 +17,7 @@ class GroupService {
     async getGroups(offset, limit) {
         try {
             const { count, rows } = await Group.findAndCountAll({
-                attributes: ['id', 'name'],
+                attributes: ['id', 'name', 'permission'],
                 offset,
                 limit
             });

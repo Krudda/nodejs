@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="refactor - remove unused imports">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="refactor - add git ignore for idea folder">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-4/controllers/groups/groupController.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/controllers/groups/groupController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-4/routes/groups.subrouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/routes/groups.subrouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-4/services/groupService.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/services/groupService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-4/services/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/services/userService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +114,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684667760209</updated>
-      <workItem from="1684667762412" duration="28401000" />
+      <workItem from="1684667762412" duration="32395000" />
     </task>
     <task id="LOCAL-00006" summary="feat - init project">
       <created>1684667930942</created>
@@ -169,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684775438225</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="refactor - add git ignore for idea folder">
+      <created>1684775838990</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1684775838990</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,6 +210,7 @@
     <MESSAGE value="feat - add scope option for user model" />
     <MESSAGE value="feat - add associations many to many" />
     <MESSAGE value="refactor - remove unused imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor - remove unused imports" />
+    <MESSAGE value="refactor - add git ignore for idea folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor - add git ignore for idea folder" />
   </component>
 </project>
