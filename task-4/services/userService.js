@@ -1,5 +1,6 @@
 import db from '../db/db.js';
 import User from "../models/User.js";
+import Group from "../models/Group.js";
 
 class UserService {
     async createUser(userData) {
@@ -72,6 +73,29 @@ class UserService {
                     where: { id }
                 });
                 return `User with ID ${id} is deleted.`;
+            })
+        } catch (err) {
+            return new Error(err.message)
+        }
+    }
+
+    async addUserToGroup(userId, groupId) {
+        try {
+            // const syncTable = await UserGroup.sync({ alter: true });
+            // console.log("The table for the User model was just (re)created!", {syncTable});
+
+            return await db.transaction(async () => {
+                const user = await User.scope('activeUsers').findByPk(userId);
+                const group = await Group.findByPk(groupId);
+
+                if (!user || !group) {
+                    return new Error(
+                        `${ !user ? `User` : `Group` } with ID:  ${ !user ? userId : groupId } not found.`
+                    );
+                }
+
+                await user.addGroup(groupId);
+                return `User with ID ${userId} was added to Group with ID ${groupId}.`;
             })
         } catch (err) {
             return new Error(err.message)

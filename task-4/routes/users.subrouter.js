@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import {
+    addUserToGroupController,
     createUserController, deleteUserController,
     getSuggestedUsersController,
     getUserController, updateUserController
@@ -34,6 +35,11 @@ export const createUsersSubrouter = () => {
     usersSubrouter.delete(
         '/:id',
         deleteUserController()
+    );
+
+    usersSubrouter.post(
+        '/group',
+        addUserToGroupController()
     );
 
     return usersSubrouter;

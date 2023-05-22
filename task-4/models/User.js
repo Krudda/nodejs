@@ -1,9 +1,11 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../db/db.js';
+import Group from "./Group.js";
+import userGroup from "./UserGroup.js";
 
 class User extends Model {}
 
-const model = User.init({
+const userModel = User.init({
     id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
@@ -45,4 +47,6 @@ const model = User.init({
     tableName: 'Users',
     modelName: 'User'
 });
-export default model;
+
+userModel.belongsToMany(Group, { through: userGroup });
+export default userModel;

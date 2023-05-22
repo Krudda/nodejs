@@ -47,9 +47,22 @@ export const updateUserController = () => async (req, res, next) => {
         return next(error);
     }
 }
+
 export const deleteUserController = () => async (req, res, next) => {
     try {
         const requestResult = await UserService.deleteUser(req.params.id);
+        checkRequestStatus(requestResult, res);
+        return next();
+    } catch (error) {
+        requestErrorHandler(error, res);
+        return next(error);
+    }
+}
+
+export const addUserToGroupController = () => async (req, res, next) => {
+    const { userId, groupId } = req.body;
+    try {
+        const requestResult = await UserService.addUserToGroup(userId, groupId);
         checkRequestStatus(requestResult, res);
         return next();
     } catch (error) {

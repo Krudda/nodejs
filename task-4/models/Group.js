@@ -1,5 +1,7 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../db/db.js';
+import userGroup from "./UserGroup.js";
+import User from "./User.js";
 
 class Group extends Model {}
 
@@ -35,4 +37,5 @@ const model = Group.init({
     tableName: 'Groups',
     modelName: 'Group'
 });
+
 export default model;
