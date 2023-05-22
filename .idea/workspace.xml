@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="feat - add associations many to many">
+    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="refactor - remove unused imports">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-4/models/Group.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/models/Group.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-4/models/UserGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/models/UserGroup.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +111,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684667760209</updated>
-      <workItem from="1684667762412" duration="28132000" />
+      <workItem from="1684667762412" duration="28401000" />
     </task>
     <task id="LOCAL-00006" summary="feat - init project">
       <created>1684667930942</created>
@@ -163,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684775342999</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="refactor - remove unused imports">
+      <created>1684775438225</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1684775438225</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,6 +199,7 @@
     <MESSAGE value="feat - update group model" />
     <MESSAGE value="feat - add scope option for user model" />
     <MESSAGE value="feat - add associations many to many" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat - add associations many to many" />
+    <MESSAGE value="refactor - remove unused imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor - remove unused imports" />
   </component>
 </project>
