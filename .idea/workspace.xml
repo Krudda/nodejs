@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="feat - add scope option for user model">
+    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="feat - add associations many to many">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-4/controllers/users/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/controllers/users/userController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task-4/models/Group.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/models/Group.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-4/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/models/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-4/routes/users.subrouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/routes/users.subrouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-4/schemas/userSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/schemas/userSchema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-4/services/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/services/userService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-4/models/UserGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/models/UserGroup.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +112,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684667760209</updated>
-      <workItem from="1684667762412" duration="27921000" />
+      <workItem from="1684667762412" duration="28132000" />
     </task>
     <task id="LOCAL-00006" summary="feat - init project">
       <created>1684667930942</created>
@@ -160,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684695772355</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="feat - add associations many to many">
+      <created>1684775342998</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1684775342999</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +192,7 @@
     <MESSAGE value="refactor - user and group controllers refactor" />
     <MESSAGE value="feat - update group model" />
     <MESSAGE value="feat - add scope option for user model" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat - add scope option for user model" />
+    <MESSAGE value="feat - add associations many to many" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat - add associations many to many" />
   </component>
 </project>

@@ -1,7 +1,5 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../db/db.js';
-import User from "./User.js";
-import Group from "./Group.js";
 
 class UserGroup extends Model {}
 
