@@ -27,8 +27,10 @@ export const getGroupController = () => async (req, res, next) => {
 export const getGroupsController = () => async (req, res, next) => {
     const { offset = process.env.REQUEST_OFFSET, limit = process.env.REQUEST_LIMIT } = req.query;
 
+    const maximumLimit = Number(limit) > 10 ? 10 : limit;
+
     try {
-        const groups = await GroupService.getGroups(offset, limit);
+        const groups = await GroupService.getGroups(offset, maximumLimit);
         res.json(groups);
         return next();
     } catch (error) {

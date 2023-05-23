@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="refactor - add git ignore for idea folder">
+    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="refactor - clear code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task-4/controllers/groups/groupController.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/controllers/groups/groupController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-4/routes/groups.subrouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/routes/groups.subrouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-4/services/groupService.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/services/groupService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-4/controllers/users/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/controllers/users/userController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task-4/services/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/services/userService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -114,7 +113,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684667760209</updated>
-      <workItem from="1684667762412" duration="32395000" />
+      <workItem from="1684667762412" duration="36272000" />
     </task>
     <task id="LOCAL-00006" summary="feat - init project">
       <created>1684667930942</created>
@@ -179,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684775838990</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="refactor - clear code">
+      <created>1684780257068</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1684780257068</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,6 +217,7 @@
     <MESSAGE value="feat - add associations many to many" />
     <MESSAGE value="refactor - remove unused imports" />
     <MESSAGE value="refactor - add git ignore for idea folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor - add git ignore for idea folder" />
+    <MESSAGE value="refactor - clear code" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor - clear code" />
   </component>
 </project>

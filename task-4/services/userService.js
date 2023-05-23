@@ -83,9 +83,6 @@ class UserService {
 
     async addUserToGroup(userId, groupId) {
         try {
-            // const syncTable = await UserGroup.sync({ alter: true });
-            // console.log("The table for the User model was just (re)created!", {syncTable});
-
             return await db.transaction(async () => {
                 const user = await User.scope('activeUsers').findByPk(userId);
                 const group = await Group.findByPk(groupId);

@@ -27,8 +27,10 @@ export const getUserController = () => async (req, res, next) => {
 export const getSuggestedUsersController = () => async (req, res, next) => {
     const { offset = process.env.REQUEST_OFFSET, limit = process.env.REQUEST_LIMIT } = req.query;
 
+    const maximumLimit = Number(limit) > 10 ? 10 : limit;
+
     try {
-        const suggestedUsers = await UserService.getAutoSuggestUsers(offset, limit);
+        const suggestedUsers = await UserService.getAutoSuggestUsers(offset, maximumLimit);
         res.json(suggestedUsers);
         return next();
     } catch (error) {
