@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="refactor - clear code">
+    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="feat - add data response limitation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-4/controllers/groups/groupController.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/controllers/groups/groupController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-4/controllers/users/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/controllers/users/userController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task-4/services/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/task-4/services/userService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +46,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/dmitrijkruglov/Desktop/JS/NodeJS/nodejs/task-4/models",
+    "last_opened_file_path": "/Users/dmitrijkruglov/Desktop/JS/NodeJS/nodejs/task-5",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -60,6 +57,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/task-5" />
       <recent name="$PROJECT_DIR$/task-4/models" />
       <recent name="$PROJECT_DIR$/task-4/controllers/groups" />
       <recent name="$PROJECT_DIR$/task-4/services" />
@@ -114,6 +112,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684667760209</updated>
       <workItem from="1684667762412" duration="36272000" />
+      <workItem from="1685283064376" duration="713000" />
     </task>
     <task id="LOCAL-00006" summary="feat - init project">
       <created>1684667930942</created>
