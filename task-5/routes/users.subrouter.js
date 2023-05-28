@@ -5,14 +5,14 @@ import {
     getSuggestedUsersController,
     getUserController, updateUserController
 } from "../controllers/users/userController.js";
-import userValidationMiddlevare from "../middlewares/userValidationMiddlevare.js";
+import userValidationMiddleware from "../middlewares/userValidationMiddleware.js";
 
 export const createUsersSubrouter = () => {
     const usersSubrouter = Router();
 
     usersSubrouter.post(
         '/',
-        userValidationMiddlevare(),
+        userValidationMiddleware(),
         createUserController()
     );
 
@@ -28,7 +28,7 @@ export const createUsersSubrouter = () => {
 
     usersSubrouter.put(
         '/',
-        userValidationMiddlevare(),
+        userValidationMiddleware(),
         updateUserController()
     );
 

@@ -14,7 +14,7 @@ const db = new Sequelize({
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     dialect: process.env.DB_TYPE,
-    logging: console.log,
+    logging: false,
     timezone: '+00:00',
     define: {
         timestamps: false
