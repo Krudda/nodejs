@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="feat - add data response limitation">
+    <list default="true" id="aa7884ed-60e9-40cd-ae5a-ffa93a231c82" name="Changes" comment="init - init task-5 project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-5/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/task-5/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +113,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684667760209</updated>
       <workItem from="1684667762412" duration="36272000" />
-      <workItem from="1685283064376" duration="713000" />
+      <workItem from="1685283064376" duration="952000" />
     </task>
     <task id="LOCAL-00006" summary="feat - init project">
       <created>1684667930942</created>
@@ -184,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684780257068</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="init - init task-5 project">
+      <created>1685283872856</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1685283872856</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,6 +225,7 @@
     <MESSAGE value="refactor - remove unused imports" />
     <MESSAGE value="refactor - add git ignore for idea folder" />
     <MESSAGE value="refactor - clear code" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor - clear code" />
+    <MESSAGE value="init - init task-5 project" />
+    <option name="LAST_COMMIT_MESSAGE" value="init - init task-5 project" />
   </component>
 </project>
