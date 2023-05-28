@@ -1,6 +1,5 @@
 import pino from 'pino-http';
 
-
 const loggerMiddleware = pino({
         transport: {
             target: 'pino-pretty',
