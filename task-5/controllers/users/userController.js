@@ -16,7 +16,7 @@ export const getUserController = async (req, res, next) => {
     try {
         const { id } = req.params;
         const user = await UserService.getUser(id);
-        res.json(user)
+        res.json(user);
         req.log.info('Users: Get user request conditions');
         return next();
     } catch (error) {

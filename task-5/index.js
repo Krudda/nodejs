@@ -9,11 +9,10 @@ dotenv.config();
 const PORT = process.env.PORT || 5000;
 const server = express();
 
-// process.on('uncaughtException', (err) => {
-//     console.log('Caught exception. Exiting. error: ' + err + ', stack: ' + err.stack)
-//     // log.warn('Caught exception. Exiting. error: ' + err + ', stack: ' + err.stack);
-//     process.exit(1);
-// });
+process.on('uncaughtException', (error) => {
+    console.error('Uncaught Exception:', error);
+    process.exit(1);
+});
 
 server.use(express.json());
 server.use(logger);
@@ -22,11 +21,12 @@ server.use(errorHandlingMiddleware);
 
 async function startApp() {
     try {
-        server.listen(PORT, () => { console.log(`Server works on port ${PORT}`); });
+        server.listen(PORT, () => {
+            console.log(`Server works on port ${PORT}`);
+        });
     } catch (error) {
-        console.log('App start error', error);
+        console.error('Server start error', error);
     }
-    // console.log(xs)
 }
 
 startApp();
