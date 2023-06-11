@@ -12,7 +12,7 @@ export const createGroupsSubrouter = () => {
 
     groupsSubrouter.post(
         '/',
-        createGroupController()
+        createGroupController
     );
 
     groupsSubrouter.get(
@@ -22,18 +22,17 @@ export const createGroupsSubrouter = () => {
 
     groupsSubrouter.get(
         '/:id',
-        getGroupController()
+        getGroupController
     );
 
     groupsSubrouter.put(
         '/',
-        // userValidateMiddlevare(),
-        updateGroupController()
+        updateGroupController
     );
 
     groupsSubrouter.delete(
         '/:id',
-        deleteGroupController()
+        deleteGroupController
     );
 
     return groupsSubrouter;

@@ -1,8 +1,8 @@
 import * as dotenv from 'dotenv';
 import express from 'express';
-import loggerMiddleware from "./middlewares/loggerMiddleware.js";
 import router from './routes/router.js';
 import errorHandlingMiddleware from "./middlewares/errorHandlingMiddleware.js";
+import logger from "./logger/index.js";
 
 dotenv.config();
 
@@ -16,7 +16,7 @@ const server = express();
 // });
 
 server.use(express.json());
-server.use(loggerMiddleware);
+server.use(logger);
 server.use('/', router);
 server.use(errorHandlingMiddleware);
 

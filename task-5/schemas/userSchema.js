@@ -18,18 +18,10 @@ const schema = {
         },
         email: {
             type: 'string',
-            // pattern: '/^([a-zA-Z0-9_\\.\\-]+)@([\\da-zA-Z\\.\\-]+)\\.([a-zA-Z\\.]{2,6})$/gi',
         },
     },
     required: ['username', 'password', 'email'],
-    additionalProperties: true,
-    errorMessage: {
-        properties: {
-            username: 'User name must be a string longer than 2 characters',
-            password: 'The password must be a string of at least 8 characters.',
-            email: 'Invalid email.',
-        },
-    },
+    additionalProperties: true
 };
 
 export default ajv.compile(schema);
