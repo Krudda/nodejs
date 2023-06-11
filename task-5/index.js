@@ -2,7 +2,7 @@ import * as dotenv from 'dotenv';
 import express from 'express';
 import router from './routes/router.js';
 import errorHandlingMiddleware from "./middlewares/errorHandlingMiddleware.js";
-import logger from "./logger/index.js";
+import logger from "./logger/logger.js";
 
 dotenv.config();
 

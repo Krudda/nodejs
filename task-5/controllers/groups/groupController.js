@@ -1,4 +1,3 @@
-import { checkRequestStatus } from "../controllerUtils.js";
 import GroupService from "../../services/groupService.js";
 
 export const createGroupController = async (req, res, next) => {

@@ -1,18 +1,16 @@
 import db from '../db/db.js';
 import User from "../models/User.js";
 import Group from "../models/Group.js";
+import { InvalidUserRequestError } from "../errors/index.js";
 
 class UserService {
     async createUser(userData) {
         try {
-            const user = await User.create(userData);
-            if (!user) {
-                return new Error('Error user creation.');
-            }
+            await User.create(userData);
             return 'User successfully created.';
         }
         catch (err) {
-            throw new Error(err)
+            throw new InvalidUserRequestError('Failed to add user.');
         }
 
     }
@@ -26,7 +24,7 @@ class UserService {
             });
             return  { count, rows };
         } catch (err) {
-            throw new Error(err)
+            throw new InvalidUserRequestError('Failed to fetch users.');
         }
     }
 
@@ -34,11 +32,11 @@ class UserService {
         try {
             const user = await User.scope('activeUsers').findByPk(id);
             if (!user) {
-                return new Error(`User with ID: ${id} not found.`);
+                throw new Error();
             }
             return { username: user.username, email: user.email };
         } catch (err) {
-            throw new Error(err);
+            throw new InvalidUserRequestError('Failed to fetch user.');
         }
     }
 
@@ -46,10 +44,10 @@ class UserService {
         const { id, ...userFields} = user;
         try {
             return await db.transaction(async () => {
-                const checkUserError = await this.getUser(id);
+                const isUserExist = await this.getUser(id);
 
-                if (checkUserError instanceof Error) {
-                    return checkUserError;
+                if (!isUserExist) {
+                    throw new Error();
                 }
 
                 await User.update({...userFields}, {
@@ -58,17 +56,17 @@ class UserService {
                 return `User with ID ${id} is updated.`;
             })
         } catch (err) {
-            throw new Error(err)
+            throw new InvalidUserRequestError('Failed to update user.');
         }
     }
 
     async deleteUser(id) {
         try {
             return await db.transaction(async () => {
-                const checkUserError = await this.getUser(id);
+                const isUserExist = await this.getUser(id);
 
-                if (checkUserError instanceof Error) {
-                    return checkUserError;
+                if (!isUserExist) {
+                    throw new Error();
                 }
 
                 await User.update({ isDeleted: true }, {
@@ -77,7 +75,7 @@ class UserService {
                 return `User with ID ${id} is deleted.`;
             })
         } catch (err) {
-            return new Error(err.message)
+            throw new InvalidUserRequestError('Failed to delete user.');
         }
     }
 
@@ -88,16 +86,14 @@ class UserService {
                 const group = await Group.findByPk(groupId);
 
                 if (!user || !group) {
-                    return new Error(
-                        `${ !user ? `User` : `Group` } with ID:  ${ !user ? userId : groupId } not found.`
-                    );
+                    throw new Error();
                 }
 
                 await user.addGroup(groupId);
                 return `User with ID ${userId} was added to Group with ID ${groupId}.`;
             })
         } catch (err) {
-            return new Error(err.message)
+            throw new InvalidUserRequestError('Failed to add user to the group.');
         }
     }
 }

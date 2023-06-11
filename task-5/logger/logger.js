@@ -1,6 +1,6 @@
 import pino from 'pino-http';
 
-const index = pino({
+const logger = pino({
     transport: {
         targets: [
             {
@@ -27,4 +27,4 @@ const index = pino({
     },
 });
 
-export default index;
+export default logger;

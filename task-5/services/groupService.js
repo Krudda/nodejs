@@ -5,12 +5,10 @@ import { InvalidGroupRequestError } from "../errors/index.js";
 class GroupService {
     async createGroup(groupData) {
         try {
-            return await db.transaction(async () => {
-                return await Group.create(groupData);
-            })
+            await Group.create(groupData);
         }
         catch (err) {
-            throw new Error(err)
+            throw new InvalidGroupRequestError('Failed to create group.');
         }
 
     }
@@ -24,7 +22,7 @@ class GroupService {
             });
             return  { count, rows };
         } catch (err) {
-            throw new InvalidGroupRequestError('Groups fetching error.');
+            throw new InvalidGroupRequestError('Failed to fetch groups.');
         }
     }
 
@@ -36,7 +34,7 @@ class GroupService {
             }
             return group;
         } catch (err) {
-            throw new InvalidGroupRequestError('Group fetching error.');
+            throw new InvalidGroupRequestError('Failed to fetch group.');
         }
     }
 

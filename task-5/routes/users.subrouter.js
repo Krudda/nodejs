@@ -5,41 +5,38 @@ import {
     getSuggestedUsersController,
     getUserController, updateUserController
 } from "../controllers/users/userController.js";
-import userValidationMiddleware from "../middlewares/userValidationMiddleware.js";
 
 export const createUsersSubrouter = () => {
     const usersSubrouter = Router();
 
     usersSubrouter.post(
         '/',
-        userValidationMiddleware(),
-        createUserController()
+        createUserController
     );
 
     usersSubrouter.get(
         '/',
-        getSuggestedUsersController()
+        getSuggestedUsersController
     );
 
     usersSubrouter.get(
         '/:id',
-        getUserController()
+        getUserController
     );
 
     usersSubrouter.put(
         '/',
-        userValidationMiddleware(),
-        updateUserController()
+        updateUserController
     );
 
     usersSubrouter.delete(
         '/:id',
-        deleteUserController()
+        deleteUserController
     );
 
     usersSubrouter.post(
         '/group',
-        addUserToGroupController()
+        addUserToGroupController
     );
 
     return usersSubrouter;
