@@ -17,7 +17,7 @@ export const createGroupsSubrouter = () => {
 
     groupsSubrouter.get(
         '/',
-        getGroupsController()
+        getGroupsController
     );
 
     groupsSubrouter.get(

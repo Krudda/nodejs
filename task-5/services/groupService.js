@@ -1,5 +1,6 @@
 import db from '../db/db.js';
 import Group from "../models/Group.js";
+import {InvalidGroupRequestError} from "../errors.js";
 
 class GroupService {
     async createGroup(groupData) {
@@ -15,13 +16,15 @@ class GroupService {
     }
 
     async getGroups(offset, limit) {
+        // if (true) throw new InvalidGroupRequestError('Error from getGroups service');
         try {
-            const { count, rows } = await Group.findAndCountAll({
-                attributes: ['id', 'name', 'permission'],
-                offset,
-                limit
-            });
-            return  { count, rows };
+            if (true) throw new InvalidGroupRequestError('Error from getGroups service');
+            // const { count, rows } = await Group.findAndCountAll({
+            //     attributes: ['id', 'name', 'permission'],
+            //     offset,
+            //     limit
+            // });
+            // return  { count, rows };
         } catch (err) {
             throw new Error(err)
         }

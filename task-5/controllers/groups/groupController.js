@@ -28,10 +28,19 @@ export const getGroupController = () => async (req, res, next) => {
     }
 }
 
-export const getGroupsController = () => async (req, res, next) => {
+export const getGroupsController = async (req, res, next) => {
     const { offset = process.env.REQUEST_OFFSET, limit = process.env.REQUEST_LIMIT } = req.query;
 
     const maximumLimit = Number(limit) > 10 ? 10 : limit;
+
+    // const groups = await GroupService.getGroups(offset, maximumLimit);
+    //
+    // if (!groups) {
+    //     return next(error);
+    // }
+
+    // res.json(groups);
+    // req.log.info('Groups: Get groups request conditions');
 
     try {
         const groups = await GroupService.getGroups(offset, maximumLimit);
@@ -39,8 +48,8 @@ export const getGroupsController = () => async (req, res, next) => {
         req.log.info('Groups: Get groups request conditions');
         return next();
     } catch (error) {
-        requestErrorHandler(error, res);
-        req.log.error({error: error.message}, 'Groups: Get groups request failed');
+        // requestErrorHandler(error, res);
+        // req.log.error({error: error.message}, 'Groups: Get groups request failed');
         return next(error);
     }
 }
