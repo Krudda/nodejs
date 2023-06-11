@@ -15,8 +15,8 @@ export const createUserController = async (req, res, next) => {
 export const getUserController = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const requestResult = await UserService.getUser(id);
-        res.json(requestResult)
+        const user = await UserService.getUser(id);
+        res.json(user)
         req.log.info('Users: Get user request conditions');
         return next();
     } catch (error) {
@@ -31,8 +31,8 @@ export const getSuggestedUsersController = async (req, res, next) => {
 
     try {
         const suggestedUsers = await UserService.getAutoSuggestUsers(offset, maximumLimit);
-        req.log.info('Users: Get suggested users request conditions');
         res.json(suggestedUsers);
+        req.log.info('Users: Get suggested users request conditions');
         return next();
     } catch (error) {
         return next(error);
@@ -41,8 +41,8 @@ export const getSuggestedUsersController = async (req, res, next) => {
 
 export const updateUserController = async (req, res, next) => {
     try {
-        const requestResult = await UserService.updateUser(req.body);
-        res.json(requestResult);
+        const user = await UserService.updateUser(req.body);
+        res.json(user);
         req.log.info('Users: Update user request conditions');
         return next();
     } catch (error) {
@@ -52,8 +52,8 @@ export const updateUserController = async (req, res, next) => {
 
 export const deleteUserController = async (req, res, next) => {
     try {
-        const requestResult = await UserService.deleteUser(req.params.id);
-        res.json(requestResult);
+        const user = await UserService.deleteUser(req.params.id);
+        res.json(user);
         req.log.info('Users: Delete user request conditions');
         return next();
     } catch (error) {

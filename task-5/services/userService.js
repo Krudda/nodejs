@@ -2,6 +2,7 @@ import db from '../db/db.js';
 import User from "../models/User.js";
 import Group from "../models/Group.js";
 import { InvalidUserRequestError } from "../errors/index.js";
+import {checkData} from "./utils.js";
 
 class UserService {
     async createUser(userData) {
@@ -31,9 +32,7 @@ class UserService {
     async getUser(id) {
         try {
             const user = await User.scope('activeUsers').findByPk(id);
-            if (!user) {
-                throw new Error();
-            }
+            checkData(user);
             return { username: user.username, email: user.email };
         } catch (err) {
             throw new InvalidUserRequestError('Failed to fetch user.');
@@ -45,11 +44,7 @@ class UserService {
         try {
             return await db.transaction(async () => {
                 const isUserExist = await this.getUser(id);
-
-                if (!isUserExist) {
-                    throw new Error();
-                }
-
+                checkData(isUserExist);
                 await User.update({...userFields}, {
                     where: { id }
                 });
@@ -64,11 +59,7 @@ class UserService {
         try {
             return await db.transaction(async () => {
                 const isUserExist = await this.getUser(id);
-
-                if (!isUserExist) {
-                    throw new Error();
-                }
-
+                checkData(isUserExist);
                 await User.update({ isDeleted: true }, {
                     where: { id }
                 });
@@ -84,11 +75,8 @@ class UserService {
             return await db.transaction(async () => {
                 const user = await User.scope('activeUsers').findByPk(userId);
                 const group = await Group.findByPk(groupId);
-
-                if (!user || !group) {
-                    throw new Error();
-                }
-
+                checkData(user);
+                checkData(group);
                 await user.addGroup(groupId);
                 return `User with ID ${userId} was added to Group with ID ${groupId}.`;
             })

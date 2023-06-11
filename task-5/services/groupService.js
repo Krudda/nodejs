@@ -1,6 +1,7 @@
 import db from '../db/db.js';
 import Group from "../models/Group.js";
 import { InvalidGroupRequestError } from "../errors/index.js";
+import {checkData} from "./utils.js";
 
 class GroupService {
     async createGroup(groupData) {
@@ -29,9 +30,7 @@ class GroupService {
     async getGroup(id) {
         try {
             const group = await Group.findByPk(id);
-            if (!group) {
-                throw new Error();
-            }
+            checkData(group);
             return group;
         } catch (err) {
             throw new InvalidGroupRequestError('Failed to fetch group.');
@@ -43,11 +42,7 @@ class GroupService {
         try {
             return await db.transaction(async () => {
                 const isGroupExist = await this.getGroup(id);
-
-                if (!isGroupExist) {
-                    throw new Error();
-                }
-
+                checkData(isGroupExist);
                 await Group.update({...groupFields}, {
                     where: { id }
                 });
@@ -62,11 +57,7 @@ class GroupService {
         try {
             return await db.transaction(async () => {
                 const isGroupExist = await this.getGroup(id);
-
-                if (!isGroupExist) {
-                    throw new Error();
-                }
-
+                checkData(isGroupExist);
                 await Group.destroy( {
                     where: { id }
                 });

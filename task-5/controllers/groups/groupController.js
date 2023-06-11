@@ -14,7 +14,8 @@ export const createGroupController = async (req, res, next) => {
 export const getGroupController = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const requestResult = await GroupService.getGroup(id);
+        const group = await GroupService.getGroup(id);
+        res.json(group);
         req.log.info('Groups: Get group request conditions');
         return next();
     } catch (error) {
