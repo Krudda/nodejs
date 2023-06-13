@@ -4,7 +4,7 @@ export const createUserController = async (req, res, next) => {
     try {
         const user = await UserService.createUser(req.body);
         res.json(user);
-        req.log.info('Users: Create user request conditions');
+        req.log.info({ data: req.body }, 'Users: Create user request conditions');
         return next();
     } catch (error) {
         return next(error);
