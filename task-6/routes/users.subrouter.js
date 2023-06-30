@@ -3,7 +3,7 @@ import {
     addUserToGroupController,
     createUserController, deleteUserController,
     getSuggestedUsersController,
-    getUserController, updateUserController
+    getUserController, loginController, logoutController, tokenRefreshController, updateUserController
 } from "../controllers/users/userController.js";
 
 export const createUsersSubrouter = () => {
@@ -12,6 +12,20 @@ export const createUsersSubrouter = () => {
     usersSubrouter.post(
         '/',
         createUserController
+    );
+
+    usersSubrouter.post(
+        '/login',
+        loginController
+    );
+
+    usersSubrouter.post(
+        '/logout',
+        logoutController
+    );
+    usersSubrouter.post(
+        '/refresh',
+        tokenRefreshController
     );
 
     usersSubrouter.get(

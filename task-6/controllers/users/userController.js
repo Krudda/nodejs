@@ -1,5 +1,38 @@
 import UserService from '../../services/userService.js';
 
+export const loginController = async (req, res, next) => {
+    try {
+        const user = await UserService.createUser(req.body);
+        res.json(user);
+        req.log.info({ data: req.body }, 'Users: Login user request conditions');
+        return next();
+    } catch (error) {
+        return next(error);
+    }
+};
+
+export const logoutController = async (req, res, next) => {
+    try {
+        const user = await UserService.createUser(req.body);
+        res.json(user);
+        req.log.info({ data: req.body }, 'Users: Logout user request');
+        return next();
+    } catch (error) {
+        return next(error);
+    }
+};
+
+export const tokenRefreshController = async (req, res, next) => {
+    try {
+        const user = await UserService.createUser(req.body);
+        res.json(user);
+        req.log.info({ data: req.body }, 'Users: Login user request conditions');
+        return next();
+    } catch (error) {
+        return next(error);
+    }
+};
+
 export const createUserController = async (req, res, next) => {
     try {
         const user = await UserService.createUser(req.body);
@@ -10,7 +43,6 @@ export const createUserController = async (req, res, next) => {
         return next(error);
     }
 }
-
 
 export const getUserController = async (req, res, next) => {
     try {

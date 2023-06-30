@@ -1,5 +1,7 @@
 import * as dotenv from 'dotenv';
 import express from 'express';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import router from './routes/router.js';
 import errorHandlingMiddleware from "./middlewares/errorHandlingMiddleware.js";
 import logger from "./logger/logger.js";
@@ -18,6 +20,8 @@ process.on('unhandledRejection', (reason, promise) => {
 });
 
 server.use(express.json());
+server.use(cookieParser());
+server.use(cors());
 server.use(logger);
 server.use('/', router);
 server.use(errorHandlingMiddleware);

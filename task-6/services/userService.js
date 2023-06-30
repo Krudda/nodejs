@@ -1,14 +1,20 @@
+import bcrypt from 'bcrypt';
 import db from '../db/db.js';
 import User from "../models/User.js";
 import Group from "../models/Group.js";
 import { InvalidUserRequestError } from "../errors/index.js";
 import {checkData} from "./utils.js";
+import TokenService from "./tokenService.js";
 
 class UserService {
     async createUser(userData) {
         try {
-            await User.create(userData);
-            return 'User successfully created.';
+            const { password, ...userFields } = userData;
+            const hashPassword = bcrypt.hash(password, 3);
+            const user = await User.create({ password: hashPassword, ...userFields });
+            const tokens = await TokenService.generateTokens(userFields);
+            TokenService.saveToken({ user: user.id }, tokens.refreshToken);
+            return { message: 'User successfully created.', ...tokens };
         }
         catch (err) {
             throw new InvalidUserRequestError('Failed to add user.');
