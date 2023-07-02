@@ -12,7 +12,6 @@ class TokenService {
         try {
             const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, { expiresIn: '3m' });
             const refreshToken = jwt.sign(payload, process.env.JWT_REFRESH_SECRET, { expiresIn: '30m' });
-            // await Token.create(userData);
             return { accessToken, refreshToken };
         }
         catch (err) {
@@ -28,34 +27,69 @@ class TokenService {
                     where: { userId }
                 });
             }
-            const token = Token.create({ user: userId, refreshToken });
+            const token = await Token.create({ user: userId, refreshToken });
             return token;
         }
         catch (err) {
             throw new InvalidTokenRequestError('Failed to save token.');
         }
     }
-
-    async logout() {
+    
+    validateAccessToken(token) {
         try {
-            const { count, rows } = await User.scope('activeUsers').findAndCountAll({
-                attributes: ['username', 'email'],
-            });
-            return  { count, rows };
-        } catch (err) {
-            throw new InvalidUserRequestError('Failed to fetch users.');
+            const userData = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
+            return userData;
+        }
+        catch (e) {
+            return null;
         }
     }
 
-    async refresh(id) {
+    validateRefreshToken(token) {
         try {
-            const user = await User.scope('activeUsers').findByPk(id);
-            checkData(user);
-            return { username: user.username, email: user.email };
-        } catch (err) {
-            throw new InvalidUserRequestError('Failed to fetch user.');
+            const userData = jwt.verify(token, process.env.JWT_REFRESH_SECRET);
+            return userData;
+        }
+        catch (e) {
+            return null;
         }
     }
+
+    async findToken(refreshToken) {
+        return await Token.findOne({ where: { refreshToken } });
+    }
+
+    // async logout() {
+    //     try {
+    //         const { count, rows } = await User.scope('activeUsers').findAndCountAll({
+    //             attributes: ['username', 'email'],
+    //         });
+    //         return  { count, rows };
+    //     } catch (err) {
+    //         throw new InvalidUserRequestError('Failed to fetch users.');
+    //     }
+    // }
+
+    // async refresh(refreshToken) {
+    //     if (!refreshToken) {
+    //         throw new InvalidTokenRequestError('Unauthorized.');
+    //     }
+    //     try {
+    //         const userData = this.validateRefreshToken(refreshToken);
+    //         const tokenFromDB = await this.findToken(refreshToken);
+    //
+    //         if (!userData || !tokenFromDB) {
+    //             throw new InvalidTokenRequestError('Unauthorized.');
+    //         }
+    //
+    //         const user = await User.findByPk(userData.id);
+    //
+    //
+    //         return { username: user.username, email: user.email };
+    //     } catch (err) {
+    //         throw new InvalidUserRequestError('Failed to fetch user.');
+    //     }
+    // }
 }
 
 export default new TokenService();

@@ -1,10 +1,15 @@
 import { Router } from 'express';
 import {
     addUserToGroupController,
-    createUserController, deleteUserController,
+    createUserController,
+    deleteUserController,
     getSuggestedUsersController,
-    getUserController, loginController, logoutController, tokenRefreshController, updateUserController
+    getUserController,
+    loginController,
+    tokenRefreshController,
+    updateUserController
 } from "../controllers/users/userController.js";
+import authMiddleware from "../middlewares/authMiddleware.js";
 
 export const createUsersSubrouter = () => {
     const usersSubrouter = Router();
@@ -19,10 +24,10 @@ export const createUsersSubrouter = () => {
         loginController
     );
 
-    usersSubrouter.post(
-        '/logout',
-        logoutController
-    );
+    // usersSubrouter.post(
+    //     '/logout',
+    //     logoutController
+    // );
     usersSubrouter.post(
         '/refresh',
         tokenRefreshController
@@ -30,26 +35,31 @@ export const createUsersSubrouter = () => {
 
     usersSubrouter.get(
         '/',
+        authMiddleware,
         getSuggestedUsersController
     );
 
     usersSubrouter.get(
         '/:id',
+        authMiddleware,
         getUserController
     );
 
     usersSubrouter.put(
         '/',
+        authMiddleware,
         updateUserController
     );
 
     usersSubrouter.delete(
         '/:id',
+        authMiddleware,
         deleteUserController
     );
 
     usersSubrouter.post(
         '/group',
+        authMiddleware,
         addUserToGroupController
     );
 

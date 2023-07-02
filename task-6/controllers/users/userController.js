@@ -1,4 +1,5 @@
 import UserService from '../../services/userService.js';
+import TokenService from "../../services/tokenService.js";
 
 export const loginController = async (req, res, next) => {
     try {
@@ -11,20 +12,20 @@ export const loginController = async (req, res, next) => {
     }
 };
 
-export const logoutController = async (req, res, next) => {
-    try {
-        const user = await UserService.createUser(req.body);
-        res.json(user);
-        req.log.info({ data: req.body }, 'Users: Logout user request');
-        return next();
-    } catch (error) {
-        return next(error);
-    }
-};
+// export const logoutController = async (req, res, next) => {
+//     try {
+//         const user = await UserService.createUser(req.body);
+//         res.json(user);
+//         req.log.info({ data: req.body }, 'Users: Logout user request');
+//         return next();
+//     } catch (error) {
+//         return next(error);
+//     }
+// };
 
 export const tokenRefreshController = async (req, res, next) => {
     try {
-        const user = await UserService.createUser(req.body);
+        const user = await UserService.refreshUserToken(req.body);
         res.json(user);
         req.log.info({ data: req.body }, 'Users: Login user request conditions');
         return next();
@@ -36,6 +37,21 @@ export const tokenRefreshController = async (req, res, next) => {
 export const createUserController = async (req, res, next) => {
     try {
         const user = await UserService.createUser(req.body);
+        res.cookie('refreshToken', user.refreshToken, { maxAge: 30000, httpOnly: true});
+        res.json(user);
+        req.log.info({ data: req.body }, 'Users: Create user request conditions');
+        return next();
+    } catch (error) {
+        return next(error);
+    }
+}
+
+export const refreshTokenController = async (req, res, next) => {
+    try {
+        const { refreshToken } = req.cookies;
+        const user = await TokenService.refresh(refreshToken);
+
+        res.cookie('refreshToken', user.refreshToken, { maxAge: 30000, httpOnly: true});
         res.json(user);
         req.log.info({ data: req.body }, 'Users: Create user request conditions');
         return next();

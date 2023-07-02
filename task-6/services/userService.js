@@ -5,21 +5,55 @@ import Group from "../models/Group.js";
 import { InvalidUserRequestError } from "../errors/index.js";
 import {checkData} from "./utils.js";
 import TokenService from "./tokenService.js";
+import {InvalidTokenRequestError} from "../errors/invalidTokenRequestError.js";
 
 class UserService {
     async createUser(userData) {
         try {
             const { password, ...userFields } = userData;
-            const hashPassword = bcrypt.hash(password, 3);
+            const isUserExist = await User.findOne({ where: { email: userFields.email } });
+            if( isUserExist ) {
+                throw new InvalidUserRequestError(`User with email ${userFields.email} is already exist.`);
+            }
+            const hashPassword = await bcrypt.hash(password, 3);
+
             const user = await User.create({ password: hashPassword, ...userFields });
             const tokens = await TokenService.generateTokens(userFields);
-            TokenService.saveToken({ user: user.id }, tokens.refreshToken);
+            await TokenService.saveToken(user.id, tokens.refreshToken);
             return { message: 'User successfully created.', ...tokens };
         }
         catch (err) {
-            throw new InvalidUserRequestError('Failed to add user.');
+            if (err instanceof InvalidUserRequestError) {
+                throw err;
+            }
+            else {
+                throw new InvalidUserRequestError('Failed to add user.');
+            }
         }
 
+    }
+
+    async refreshUserToken(refreshToken) {
+        if (!refreshToken) {
+            throw new InvalidTokenRequestError('Unauthorized.');
+        }
+        try {
+            const userData = this.validateRefreshToken(refreshToken);
+            const tokenFromDB = await this.findToken(refreshToken);
+
+            if (!userData || !tokenFromDB) {
+                throw new InvalidTokenRequestError('Unauthorized.');
+            }
+
+            const user = await User.findByPk(userData.id);
+
+            const tokens = await TokenService.generateTokens(user);
+            await TokenService.saveToken(user.id, tokens.refreshToken);
+
+            return { user, ...tokens };
+        } catch (err) {
+            throw new InvalidUserRequestError('Failed to fetch user.');
+        }
     }
 
     async getAutoSuggestUsers(offset, limit) {

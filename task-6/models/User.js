@@ -26,9 +26,6 @@ const userModel = User.init({
     password: {
         type: DataTypes.STRING(255),
         allowNull: false,
-        validate: {
-            len: [2, 20]
-        }
     },
     isDeleted: {
         type: DataTypes.BOOLEAN,

@@ -1,11 +1,11 @@
 import { Sequelize } from 'sequelize';
-import { createNamespace } from 'cls-hooked';
+// import { createNamespace } from 'cls-hooked';
 import * as dotenv from "dotenv";
 
 dotenv.config();
 
-const session = createNamespace('session');
-Sequelize.useCLS(session);
+// const session = createNamespace('session');
+// Sequelize.useCLS(session);
 
 const db = new Sequelize({
     database: process.env.DB_NAME,
