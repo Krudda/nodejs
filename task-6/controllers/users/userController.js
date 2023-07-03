@@ -17,7 +17,7 @@ export const loginController = async (req, res, next) => {
     try {
         const { email, password } = req.body;
         const userData = await UserService.loginUser(email, password);
-        res.cookie('refreshToken', userData.refreshToken, { maxAge: 30000, httpOnly: true});
+        res.cookie('refreshToken', userData.refreshToken, { maxAge: 10 * 60 * 1000, httpOnly: true});
         res.json(userData);
         req.log.info({ data: req.body }, 'Users: Login user request conditions');
         return next();
@@ -40,9 +40,11 @@ export const logoutController = async (req, res, next) => {
 
 export const tokenRefreshController = async (req, res, next) => {
     try {
-        const user = await UserService.refreshUserToken(req.body);
-        res.json(user);
-        req.log.info({ data: req.body }, 'Users: Login user request conditions');
+        const { refreshToken } = req.cookies;
+        const userData = await UserService.refreshUserToken(refreshToken);
+        res.cookie('refreshToken', userData.refreshToken, { maxAge: 10 * 60 * 1000, httpOnly: true});
+        res.json(userData);
+        req.log.info('Users: Refresh Token.');
         return next();
     } catch (error) {
         return next(error);

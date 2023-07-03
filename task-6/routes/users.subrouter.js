@@ -30,7 +30,7 @@ export const createUsersSubrouter = () => {
         logoutController
     );
 
-    usersSubrouter.post(
+    usersSubrouter.get(
         '/refresh',
         tokenRefreshController
     );

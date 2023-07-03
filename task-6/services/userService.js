@@ -36,12 +36,13 @@ class UserService {
 
     async loginUser(email, password) {
         try {
-            const user = await User.findOne({ where: { email } });
-            const { password: userPassword, ...userFields} = user;
+            const userData = await User.findOne({ where: { email } });
+            const user = userData.dataValues;
             if( !user ) {
                 throw new InvalidTokenRequestError(`User not found.`);
             }
 
+            const { password: userPassword, ...userFields } = user;
             const isPasswordsEqual = await bcrypt.compare(password, userPassword);
             if(!isPasswordsEqual) {
                 throw new InvalidTokenRequestError(`Incorrect password.`);
@@ -68,23 +69,25 @@ class UserService {
     }
 
     async refreshUserToken(refreshToken) {
-        if (!refreshToken) {
-            throw new InvalidTokenRequestError('Unauthorized.');
-        }
         try {
-            const userData = this.validateRefreshToken(refreshToken);
-            const tokenFromDB = await this.findToken(refreshToken);
-
+            if (!refreshToken) {
+                throw new InvalidTokenRequestError('Unauthorized.');
+            }
+            const userData = TokenService.validateRefreshToken(refreshToken);
+            const tokenData = await TokenService.findToken(refreshToken);
+            const tokenFromDB = tokenData.dataValues;
             if (!userData || !tokenFromDB) {
                 throw new InvalidTokenRequestError('Unauthorized.');
             }
 
-            const user = await User.findByPk(userData.id);
+            const userFromDB = await User.findByPk(userData.id);
+            const user = userFromDB.dataValues;
+            const { password, ...userFields } = user;
 
-            const tokens = await TokenService.generateTokens(user);
+            const tokens = await TokenService.generateTokens(userFields);
             await TokenService.saveToken(user.id, tokens.refreshToken);
 
-            return { user, ...tokens };
+            return { userFields, ...tokens };
         } catch (err) {
             throw new InvalidUserRequestError('Failed to fetch user.');
         }
