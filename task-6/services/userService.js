@@ -15,11 +15,13 @@ class UserService {
             if( isUserExist ) {
                 throw new InvalidUserRequestError(`User with email ${userFields.email} is already exist.`);
             }
-            const hashPassword = await bcrypt.hash(password, 3);
 
+            const hashPassword = await bcrypt.hash(password, 3);
             const user = await User.create({ password: hashPassword, ...userFields });
+
             const tokens = await TokenService.generateTokens(userFields);
             await TokenService.saveToken(user.id, tokens.refreshToken);
+
             return { message: 'User successfully created.', ...tokens };
         }
         catch (err) {
@@ -30,7 +32,39 @@ class UserService {
                 throw new InvalidUserRequestError('Failed to add user.');
             }
         }
+    }
 
+    async loginUser(email, password) {
+        try {
+            const user = await User.findOne({ where: { email } });
+            const { password: userPassword, ...userFields} = user;
+            if( !user ) {
+                throw new InvalidTokenRequestError(`User not found.`);
+            }
+
+            const isPasswordsEqual = await bcrypt.compare(password, userPassword);
+            if(!isPasswordsEqual) {
+                throw new InvalidTokenRequestError(`Incorrect password.`);
+            }
+
+            const tokens = await TokenService.generateTokens(userFields);
+            await TokenService.saveToken(user.id, tokens.refreshToken);
+
+            return { message: `Welcome, ${user.username}.`, ...tokens };
+        }
+        catch (err) {
+            throw new InvalidUserRequestError('Failed to login.');
+        }
+    }
+
+    async logoutUser(refreshToken) {
+        try {
+            const token = await TokenService.removeToken(refreshToken);
+            return { message: `Goodbye!`, token };
+        }
+        catch (err) {
+            throw new InvalidUserRequestError('Failed to logout.');
+        }
     }
 
     async refreshUserToken(refreshToken) {

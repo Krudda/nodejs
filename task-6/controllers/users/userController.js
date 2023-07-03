@@ -1,39 +1,6 @@
 import UserService from '../../services/userService.js';
 import TokenService from "../../services/tokenService.js";
 
-export const loginController = async (req, res, next) => {
-    try {
-        const user = await UserService.createUser(req.body);
-        res.json(user);
-        req.log.info({ data: req.body }, 'Users: Login user request conditions');
-        return next();
-    } catch (error) {
-        return next(error);
-    }
-};
-
-// export const logoutController = async (req, res, next) => {
-//     try {
-//         const user = await UserService.createUser(req.body);
-//         res.json(user);
-//         req.log.info({ data: req.body }, 'Users: Logout user request');
-//         return next();
-//     } catch (error) {
-//         return next(error);
-//     }
-// };
-
-export const tokenRefreshController = async (req, res, next) => {
-    try {
-        const user = await UserService.refreshUserToken(req.body);
-        res.json(user);
-        req.log.info({ data: req.body }, 'Users: Login user request conditions');
-        return next();
-    } catch (error) {
-        return next(error);
-    }
-};
-
 export const createUserController = async (req, res, next) => {
     try {
         const user = await UserService.createUser(req.body);
@@ -45,6 +12,42 @@ export const createUserController = async (req, res, next) => {
         return next(error);
     }
 }
+
+export const loginController = async (req, res, next) => {
+    try {
+        const { email, password } = req.body;
+        const userData = await UserService.loginUser(email, password);
+        res.cookie('refreshToken', userData.refreshToken, { maxAge: 30000, httpOnly: true});
+        res.json(userData);
+        req.log.info({ data: req.body }, 'Users: Login user request conditions');
+        return next();
+    } catch (error) {
+        return next(error);
+    }
+};
+
+export const logoutController = async (req, res, next) => {
+    try {
+        const { refreshToken } = req.cookies;
+        const logoutResult = await UserService.logoutUser(refreshToken);
+        res.clearCookie('refreshToken');
+        return res.json(logoutResult);
+        return next();
+    } catch (error) {
+        return next(error);
+    }
+};
+
+export const tokenRefreshController = async (req, res, next) => {
+    try {
+        const user = await UserService.refreshUserToken(req.body);
+        res.json(user);
+        req.log.info({ data: req.body }, 'Users: Login user request conditions');
+        return next();
+    } catch (error) {
+        return next(error);
+    }
+};
 
 export const refreshTokenController = async (req, res, next) => {
     try {

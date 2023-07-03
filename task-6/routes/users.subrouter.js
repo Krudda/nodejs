@@ -6,6 +6,7 @@ import {
     getSuggestedUsersController,
     getUserController,
     loginController,
+    logoutController,
     tokenRefreshController,
     updateUserController
 } from "../controllers/users/userController.js";
@@ -24,10 +25,11 @@ export const createUsersSubrouter = () => {
         loginController
     );
 
-    // usersSubrouter.post(
-    //     '/logout',
-    //     logoutController
-    // );
+    usersSubrouter.post(
+        '/logout',
+        logoutController
+    );
+
     usersSubrouter.post(
         '/refresh',
         tokenRefreshController

@@ -23,15 +23,21 @@ class TokenService {
         try {
             const tokenData = await Token.findByPk(userId);
             if (tokenData) {
-                return await Token.update({ refreshToken }, {
-                    where: { userId }
-                });
+                return await Token.update({ refreshToken }, { where: { user: userId }});
             }
-            const token = await Token.create({ user: userId, refreshToken });
-            return token;
+            return await Token.create({ user: userId, refreshToken });
         }
         catch (err) {
             throw new InvalidTokenRequestError('Failed to save token.');
+        }
+    }
+    async removeToken(refreshToken) {
+        try {
+            await Token.destroy({ where: { refreshToken }});
+            return 'Removed';
+        }
+        catch (err) {
+            throw new InvalidTokenRequestError('Failed to remove token.');
         }
     }
     
@@ -58,38 +64,6 @@ class TokenService {
     async findToken(refreshToken) {
         return await Token.findOne({ where: { refreshToken } });
     }
-
-    // async logout() {
-    //     try {
-    //         const { count, rows } = await User.scope('activeUsers').findAndCountAll({
-    //             attributes: ['username', 'email'],
-    //         });
-    //         return  { count, rows };
-    //     } catch (err) {
-    //         throw new InvalidUserRequestError('Failed to fetch users.');
-    //     }
-    // }
-
-    // async refresh(refreshToken) {
-    //     if (!refreshToken) {
-    //         throw new InvalidTokenRequestError('Unauthorized.');
-    //     }
-    //     try {
-    //         const userData = this.validateRefreshToken(refreshToken);
-    //         const tokenFromDB = await this.findToken(refreshToken);
-    //
-    //         if (!userData || !tokenFromDB) {
-    //             throw new InvalidTokenRequestError('Unauthorized.');
-    //         }
-    //
-    //         const user = await User.findByPk(userData.id);
-    //
-    //
-    //         return { username: user.username, email: user.email };
-    //     } catch (err) {
-    //         throw new InvalidUserRequestError('Failed to fetch user.');
-    //     }
-    // }
 }
 
 export default new TokenService();
