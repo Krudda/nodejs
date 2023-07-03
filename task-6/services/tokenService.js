@@ -1,11 +1,6 @@
 import jwt from 'jsonwebtoken';
-import db from '../db/db.js';
 import Token from "../models/Token.js";
-import Group from "../models/Group.js";
-import { InvalidUserRequestError } from "../errors/index.js";
-import {checkData} from "./utils.js";
-import User from "../models/User.js";
-import {InvalidTokenRequestError} from "../errors/invalidTokenRequestError.js";
+import {InvalidTokenRequestError, InvalidUserRequestError} from "../errors/index.js";
 
 class TokenService {
     async generateTokens(payload) {
@@ -15,7 +10,7 @@ class TokenService {
             return { accessToken, refreshToken };
         }
         catch (err) {
-            throw new InvalidTokenRequestError('Failed to generate token.');
+            throw InvalidUserRequestError('Failed to generate token.');
         }
     }
 

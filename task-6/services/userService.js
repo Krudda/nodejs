@@ -3,9 +3,9 @@ import db from '../db/db.js';
 import User from "../models/User.js";
 import Group from "../models/Group.js";
 import { InvalidUserRequestError } from "../errors/index.js";
-import {checkData} from "./utils.js";
+import { checkData } from "./utils.js";
 import TokenService from "./tokenService.js";
-import {InvalidTokenRequestError} from "../errors/invalidTokenRequestError.js";
+import { InvalidTokenRequestError } from "../errors/invalidTokenRequestError.js";
 
 class UserService {
     async createUser(userData) {
@@ -39,13 +39,13 @@ class UserService {
             const userData = await User.findOne({ where: { email } });
             const user = userData.dataValues;
             if( !user ) {
-                throw new InvalidTokenRequestError(`User not found.`);
+                throw new InvalidUserRequestError(`User not found.`);
             }
 
             const { password: userPassword, ...userFields } = user;
             const isPasswordsEqual = await bcrypt.compare(password, userPassword);
             if(!isPasswordsEqual) {
-                throw new InvalidTokenRequestError(`Incorrect password.`);
+                throw new InvalidUserRequestError(`Incorrect password.`);
             }
 
             const tokens = await TokenService.generateTokens(userFields);
@@ -71,13 +71,13 @@ class UserService {
     async refreshUserToken(refreshToken) {
         try {
             if (!refreshToken) {
-                throw new InvalidTokenRequestError('Unauthorized.');
+                throw InvalidTokenRequestError.UnauthorizedError();
             }
             const userData = TokenService.validateRefreshToken(refreshToken);
             const tokenData = await TokenService.findToken(refreshToken);
             const tokenFromDB = tokenData.dataValues;
             if (!userData || !tokenFromDB) {
-                throw new InvalidTokenRequestError('Unauthorized.');
+                throw InvalidTokenRequestError.UnauthorizedError();
             }
 
             const userFromDB = await User.findByPk(userData.id);
