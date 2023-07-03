@@ -2,10 +2,9 @@ import bcrypt from 'bcrypt';
 import db from '../db/db.js';
 import User from "../models/User.js";
 import Group from "../models/Group.js";
-import { InvalidUserRequestError } from "../errors/index.js";
+import { InvalidUserRequestError, InvalidTokenRequestError } from "../errors/index.js";
 import { checkData } from "./utils.js";
 import TokenService from "./tokenService.js";
-import { InvalidTokenRequestError } from "../errors/invalidTokenRequestError.js";
 
 class UserService {
     async createUser(userData) {
