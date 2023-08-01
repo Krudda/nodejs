@@ -3,4 +3,4 @@ EXPOSE 5000
 WORKDIR /app
 COPY ./ ./
 RUN npm i
-CMD npm start start
+CMD npm run start
